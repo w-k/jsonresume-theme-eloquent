@@ -11,11 +11,7 @@
   <title>{{resume.basics.name}}{{#if resume.basics.label}} — {{resume.basics.label}}{{/if}}</title>
 
   <style>
-    {
-        {
-        >css
-      }
-    }
+    {{> css }}
   </style>
 
   <meta name="HandheldFriendly" content="True">
@@ -629,7 +625,7 @@
   <script async defer>
     var name = '{{normalizeName resume.basics.name}}';
     window.downloadName = (name ? name + '-' : '') + 'resume.html';
-    { {> javascript } }
+    {{> javascript }}
   </script>
 
   {{#if resume.google_analytics_id}}
