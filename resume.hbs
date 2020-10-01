@@ -1,6 +1,6 @@
 <!--
-  This awesome resume was created {{#if resume.basics.name}}by {{resume.basics.name}} {{/if}}with the JSON resume schema: https://jsonresume.org/
-  It uses the Eloquent theme: https://github.com/thibaudcolas/jsonresume-theme-eloquent
+  This awesome resume was created {{#if resume.basics.name}}by {{resume.basics.name}} {{/if}}with the JSON resume schema: https://jsonresume.org/ (extended)
+  It uses the Eloquent theme: https://github.com/thibaudcolas/jsonresume-theme-eloquent (modified)
 -->
 <!doctype html>
 <html lang="en">
@@ -242,11 +242,52 @@
           </div>
           {{/if}}
 
-          {{#if resume.volunteer}}
+          {{#if resume.projects}}
           <div class="detail" id="projects">
             <h3 class="text-uppercase">
               <a class="anchor-link text-muted" href="#projects">
                 <i aria-hidden="true" class="icon-lg icon-bookmark"></i> Projects
+                <span class="anchor-icon" aria-hidden="true"></span>
+              </a>
+            </h3>
+
+            <ul class="list-unstyled">
+              {{#each resume.projects}}
+              <li class="detail-item row" id="{{itemID 'project' @index ../resume.projects.length}}"
+                itemprop="memberOf" itemscope>
+                <div class="col-sm-12 detail-item-content">
+                  <a class="anchor-link item-anchor"
+                    href="#{{itemID 'project' @index ../resume.projects.length}}">#</a>
+                  <h4>
+                    {{#if homepage}}
+                    <a href="{{homepage}}" target="_blank" rel="noreferrer noopener" itemprop="url"><strong
+                        itemprop="name">{{title}}</strong></a>
+                    {{else}}
+                    <strong itemprop="name">{{title}}</strong>
+                    {{/if}}
+                  </h4>
+
+                  <p itemprop="description">{{nl2br summary}}</p>
+
+                  {{#if highlights}}
+                  <ul class="detail-highlights">
+                    {{#each highlights}}
+                    <li>{{.}}</li>
+                    {{/each}}
+                  </ul>
+                  {{/if}}
+                </div>
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+          {{/if}}
+
+          {{#if resume.volunteer}}
+          <div class="detail" id="volunteer-projects">
+            <h3 class="text-uppercase">
+              <a class="anchor-link text-muted" href="#volunteer-projects">
+                <i aria-hidden="true" class="icon-lg icon-bookmark"></i> Volunteer Projects
                 <span class="anchor-icon" aria-hidden="true"></span>
               </a>
             </h3>
